@@ -1,4 +1,4 @@
-# LumenRoute
+# TrafficRT
 
 LumenRoute is an AI-powered traffic safety and eco-routing platform that transforms existing traffic infrastructure into an intelligent safety network. By combining live traffic camera feeds, environmental data, and AI-verified community reports, LumenRoute detects road hazards in real time and recommends safer, more sustainable routes.
 
