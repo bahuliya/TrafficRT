@@ -1,0 +1,24 @@
+{
+    "name": "trafficrt",
+    "version": "1.0.0",
+    "private": true,
+    "workspaces": [
+        "backend",
+        "webapp"
+    ],
+    "scripts": {
+        "install:all": "bun install",
+        "dev": "concurrently \"npm run dev:backend\" \"npm run dev:webapp\"",
+        "dev:backend": "cd backend && bun run dev",
+        "dev:webapp": "cd webapp && npm run dev",
+        "build": "cd webapp && npm run build",
+        "start": "cd backend && bun run start"
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.2",
+        "bun-types": "latest"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    }
+}
