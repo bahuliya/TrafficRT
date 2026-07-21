@@ -36,6 +36,18 @@ Users can report infrastructure issues directly from the application, including:
 
 Each report is automatically verified using AI-powered image analysis to reduce spam and false submissions.
 
+### Insights Dashboard
+A real-time analytics view that aggregates live camera hazards and community reports into an at-a-glance picture of road conditions across the metro area:
+
+- Summary metrics (cameras monitored, active hazards, community reports, average severity)
+- Hazard breakdown by type
+- Severity distribution
+- Community report trends
+- Current hazard hotspot
+
+### Saved Routes
+Frequent commuters can save their planned trips—including eco and hazard-avoidance preferences—and reload them into the planner with a single tap.
+
 ### Multimodal AI Analysis
 LumenRoute combines multiple sources of information into a single decision-making pipeline, including:
 
@@ -226,15 +238,31 @@ lumenroute/
 
 ---
 
+## API Endpoints
+
+| Method | Endpoint | Description |
+| --- | --- | --- |
+| `GET` | `/api/cameras` | List traffic cameras with current hazard status |
+| `GET` | `/api/cameras/hazards/active` | List cameras with active hazards |
+| `POST` | `/api/cameras/:camId/analyze` | Run Gemini hazard analysis on a camera |
+| `GET` | `/api/reports` | List community reports |
+| `POST` | `/api/reports` | Submit a community report (AI-verified) |
+| `POST` | `/api/routes/plan` | Plan eco/hazard-aware routes |
+| `GET` | `/api/insights` | Aggregated hazard and report analytics |
+| `GET` | `/api/saved-routes` | List saved routes |
+| `POST` | `/api/saved-routes` | Save a route |
+| `DELETE` | `/api/saved-routes/:id` | Delete a saved route |
+
+---
+
 ## Future Improvements
 
 - Predictive hazard forecasting
 - Live traffic congestion estimation
 - Emergency vehicle routing
-- Personalized route preferences
 - Mobile application
 - Push notifications for nearby hazards
-- Historical traffic analytics
+- Persistent storage for reports and saved routes
 - Expanded infrastructure reporting
 
 ---
