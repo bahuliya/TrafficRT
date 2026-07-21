@@ -194,3 +194,49 @@ export const GeminiScoutVerificationSchema = z.object({
 });
 
 export type GeminiScoutVerification = z.infer<typeof GeminiScoutVerificationSchema>;
+
+// ==========================================
+// Insights / Analytics Types
+// ==========================================
+
+export const SeverityBucketSchema = z.enum(["clear", "minor", "moderate", "severe"]);
+
+export type SeverityBucket = z.infer<typeof SeverityBucketSchema>;
+
+export const CategoryCountSchema = z.object({
+  label: z.string(),
+  count: z.number(),
+  avgSeverity: z.number(),
+});
+
+export type CategoryCount = z.infer<typeof CategoryCountSchema>;
+
+export const SeverityDistributionSchema = z.object({
+  bucket: SeverityBucketSchema,
+  count: z.number(),
+});
+
+export type SeverityDistribution = z.infer<typeof SeverityDistributionSchema>;
+
+export const InsightsSummarySchema = z.object({
+  totalCameras: z.number(),
+  activeHazards: z.number(),
+  clearCameras: z.number(),
+  communityReports: z.number(),
+  verifiedReports: z.number(),
+  avgHazardSeverity: z.number(),
+  hotspotLocation: z.string().nullable(),
+  generatedAt: z.string().datetime(),
+});
+
+export type InsightsSummary = z.infer<typeof InsightsSummarySchema>;
+
+export const InsightsResponseSchema = z.object({
+  summary: InsightsSummarySchema,
+  hazardsByType: z.array(CategoryCountSchema),
+  reportsByType: z.array(CategoryCountSchema),
+  severityDistribution: z.array(SeverityDistributionSchema),
+  bySource: z.array(z.object({ source: z.enum(["camera", "report"]), count: z.number() })),
+});
+
+export type InsightsResponse = z.infer<typeof InsightsResponseSchema>;
