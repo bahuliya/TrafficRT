@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* LumenRoute - Smart Commute Theme */
+    --background: 160 20% 4%;
+    --foreground: 150 10% 96%;
+
+    --card: 160 18% 7%;
+    --card-foreground: 150 10% 96%;
+
+    --popover: 160 18% 8%;
+    --popover-foreground: 150 10% 96%;
+
+    /* Primary: Vibrant eco green */
+    --primary: 155 80% 45%;
+    --primary-foreground: 160 20% 4%;
+
+    --secondary: 160 15% 14%;
+    --secondary-foreground: 150 10% 96%;
+
+    --muted: 160 12% 16%;
+    --muted-foreground: 150 8% 55%;
+
+    /* Accent: Warning amber for hazards */
+    --accent: 38 95% 55%;
+    --accent-foreground: 160 20% 4%;
+
+    /* Destructive: Alert red for active hazards */
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Success: Safe route green */
+    --success: 145 70% 45%;
+    --success-foreground: 160 20% 4%;
+
+    /* Warning: Caution yellow */
+    --warning: 45 95% 50%;
+    --warning-foreground: 160 20% 4%;
+
+    --border: 160 12% 18%;
+    --input: 160 12% 18%;
+    --ring: 155 80% 45%;
+
+    --radius: 0.75rem;
+
+    /* Guardian theme gradients */
+    --guardian-green: 155 80% 45%;
+    --guardian-teal: 175 70% 40%;
+    --guardian-blue: 200 75% 50%;
+
+    --sidebar-background: 160 18% 6%;
+    --sidebar-foreground: 150 10% 96%;
+    --sidebar-primary: 155 80% 45%;
+    --sidebar-primary-foreground: 160 20% 4%;
+    --sidebar-accent: 160 15% 14%;
+    --sidebar-accent-foreground: 150 10% 96%;
+    --sidebar-border: 160 12% 18%;
+    --sidebar-ring: 155 80% 45%;
+  }
+
+  .dark {
+    --background: 160 20% 4%;
+    --foreground: 150 10% 96%;
+
+    --card: 160 18% 7%;
+    --card-foreground: 150 10% 96%;
+
+    --popover: 160 18% 8%;
+    --popover-foreground: 150 10% 96%;
+
+    --primary: 155 80% 45%;
+    --primary-foreground: 160 20% 4%;
+
+    --secondary: 160 15% 14%;
+    --secondary-foreground: 150 10% 96%;
+
+    --muted: 160 12% 16%;
+    --muted-foreground: 150 8% 55%;
+
+    --accent: 38 95% 55%;
+    --accent-foreground: 160 20% 4%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 98%;
+
+    --success: 145 70% 45%;
+    --success-foreground: 160 20% 4%;
+
+    --warning: 45 95% 50%;
+    --warning-foreground: 160 20% 4%;
+
+    --border: 160 12% 18%;
+    --input: 160 12% 18%;
+    --ring: 155 80% 45%;
+
+    --sidebar-background: 160 18% 6%;
+    --sidebar-foreground: 150 10% 96%;
+    --sidebar-primary: 155 80% 45%;
+    --sidebar-primary-foreground: 160 20% 4%;
+    --sidebar-accent: 160 15% 14%;
+    --sidebar-accent-foreground: 150 10% 96%;
+    --sidebar-border: 160 12% 18%;
+    --sidebar-ring: 155 80% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'DM Sans', sans-serif;
+  }
+}
+
+/* ==============================
+   Mystical Grid Background
+   ============================== */
+
+.mystical-grid {
+  background-image:
+    linear-gradient(rgba(34, 197, 94, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 197, 94, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+}
+
+/* ==============================
+   Pulse glow for grid nodes
+   ============================== */
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.8);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+/* ==============================
+   Floating orb drift animations
+   ============================== */
+
+@keyframes drift-1 {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(30px, -20px);
+  }
+
+  50% {
+    transform: translate(-20px, 30px);
+  }
+
+  75% {
+    transform: translate(20px, 20px);
+  }
+}
+
+@keyframes drift-2 {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(-25px, 20px);
+  }
+
+  50% {
+    transform: translate(30px, -15px);
+  }
+
+  75% {
+    transform: translate(-15px, -25px);
+  }
+}
+
+.animate-drift-1 {
+  animation: drift-1 25s ease-in-out infinite;
+}
+
+.animate-drift-2 {
+  animation: drift-2 30s ease-in-out infinite;
+}
+
+/* ==============================
+   Entry animations
+   ============================== */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.animate-fade-in-left {
+  animation: fade-in-left 0.4s ease-out forwards;
+}
+
+/* ==============================
+   Safe area for mobile
+   ============================== */
+
+.safe-area-pb {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* ==============================
+   Shiny text animation for "Green"
+   ============================== */
+
+@keyframes shine {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.text-shiny-green {
+  background: linear-gradient(90deg,
+      hsl(155 80% 45%) 0%,
+      hsl(155 80% 45%) 40%,
+      hsl(155 90% 70%) 50%,
+      hsl(155 80% 45%) 60%,
+      hsl(155 80% 45%) 100%);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s ease-in-out infinite;
+}
