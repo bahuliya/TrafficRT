@@ -10,6 +10,8 @@ import {
   Eye,
   MapPin,
   Users,
+  BarChart3,
+  Activity,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -60,6 +62,21 @@ const features = [
     shadowColor: "shadow-blue-500/20",
     screenshot: "/screenshots/scout.png",
     highlights: ["Community reporting", "Infrastructure tracking", "Crowd-verified data"],
+  },
+  {
+    id: "insights",
+    title: "Insights",
+    subtitle: "Real-Time Traffic Analytics",
+    description:
+      "See the pulse of the city at a glance. Insights aggregates live camera hazards and community reports into clear charts—hazard types, severity distribution, and active hotspots—so you always know where and how road conditions are changing across Atlanta.",
+    icon: BarChart3,
+    detailIcon: Activity,
+    path: "/insights",
+    gradient: "from-purple-500 to-fuchsia-500",
+    bgGradient: "from-purple-500/10 to-fuchsia-500/5",
+    shadowColor: "shadow-purple-500/20",
+    screenshot: "/screenshots/insights.png",
+    highlights: ["Live hazard breakdown", "Severity distribution", "Report trends"],
   },
 ];
 
