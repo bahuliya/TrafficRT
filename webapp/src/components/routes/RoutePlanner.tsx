@@ -7,12 +7,20 @@ import { EnvironmentalBadges } from "./EnvironmentalBadges";
 import { GeminiRecommendation } from "./GeminiRecommendation";
 import { RouteMap } from "./RouteMap";
 import { SaveRouteButton } from "./SaveRouteButton";
+import { SavedRoutesList } from "./SavedRoutesList";
 import { useRoutePlanner } from "@/hooks/useRoutePlanner";
-import type { RouteRequest, RouteResponse } from "../../../../backend/src/types";
+import type {
+  RouteRequest,
+  RouteResponse,
+  SavedRoute,
+} from "../../../../backend/src/types";
 
 export function RoutePlanner() {
   const [selectedRouteId, setSelectedRouteId] = useState<string | null>(null);
   const [lastRequest, setLastRequest] = useState<RouteRequest | null>(null);
+  // Prefill defaults for the input form; `key` forces a remount when a saved
+  // route is loaded so the controlled fields reset to the new values.
+  const [prefill, setPrefill] = useState<{ values: RouteRequest; key: number } | null>(null);
   const routePlannerMutation = useRoutePlanner();
 
   const handleSubmit = (request: RouteRequest) => {
@@ -25,6 +33,18 @@ export function RoutePlanner() {
         }
       },
     });
+  };
+
+  const handleLoadSavedRoute = (route: SavedRoute) => {
+    const request: RouteRequest = {
+      origin: route.origin,
+      destination: route.destination,
+      preferEco: route.preferEco,
+      avoidHazards: route.avoidHazards,
+    };
+    setPrefill({ values: request, key: Date.now() });
+    handleSubmit(request);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const data: RouteResponse | undefined = routePlannerMutation.data;
@@ -50,8 +70,18 @@ export function RoutePlanner() {
         </header>
 
         <section className="bg-card/50 rounded-2xl p-4 shadow-sm border border-border/50 backdrop-blur-sm">
-          <RouteInput onSubmit={handleSubmit} isLoading={isLoading} />
+          <RouteInput
+            key={prefill?.key ?? "default"}
+            onSubmit={handleSubmit}
+            isLoading={isLoading}
+            defaultOrigin={prefill?.values.origin}
+            defaultDestination={prefill?.values.destination}
+            defaultPreferEco={prefill?.values.preferEco}
+            defaultAvoidHazards={prefill?.values.avoidHazards}
+          />
         </section>
+
+        <SavedRoutesList onSelect={handleLoadSavedRoute} />
 
         {error && (
           <Alert variant="destructive">

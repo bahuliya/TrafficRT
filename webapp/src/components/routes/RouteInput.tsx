@@ -10,13 +10,24 @@ import type { RouteRequest } from "../../../../backend/src/types";
 interface RouteInputProps {
   onSubmit: (request: RouteRequest) => void;
   isLoading?: boolean;
+  defaultOrigin?: string;
+  defaultDestination?: string;
+  defaultPreferEco?: boolean;
+  defaultAvoidHazards?: boolean;
 }
 
-export function RouteInput({ onSubmit, isLoading = false }: RouteInputProps) {
-  const [origin, setOrigin] = useState("");
-  const [destination, setDestination] = useState("");
-  const [preferEco, setPreferEco] = useState(false);
-  const [avoidHazards, setAvoidHazards] = useState(true);
+export function RouteInput({
+  onSubmit,
+  isLoading = false,
+  defaultOrigin = "",
+  defaultDestination = "",
+  defaultPreferEco = false,
+  defaultAvoidHazards = true,
+}: RouteInputProps) {
+  const [origin, setOrigin] = useState(defaultOrigin);
+  const [destination, setDestination] = useState(defaultDestination);
+  const [preferEco, setPreferEco] = useState(defaultPreferEco);
+  const [avoidHazards, setAvoidHazards] = useState(defaultAvoidHazards);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
