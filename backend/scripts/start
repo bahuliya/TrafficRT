@@ -1,0 +1,21 @@
+#!/bin/bash
+set -o errexit
+set -o nounset
+set -o pipefail
+
+# Load shared environment setup
+source "$(dirname "$0")/env.sh"
+
+# Install dependencies
+echo "Installing dependencies..."
+bun install
+
+# Start server based on environment
+# Use bun directly (not "bun run") so signals propagate correctly
+if [[ "${ENVIRONMENT}" == "production" ]]; then
+  echo "Starting server in production mode..."
+  exec bun src/index.ts
+else
+  echo "Starting server in dev mode with hot reload..."
+  exec bun --hot src/index.ts
+fi

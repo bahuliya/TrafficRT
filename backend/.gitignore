@@ -1,0 +1,20 @@
+# dependencies
+node_modules
+.bun
+
+# environment
+.env
+.env.*
+!.env.example
+
+# output
+dist
+out
+coverage
+
+# logs
+logs
+*.log
+
+# prisma
+/generated/prisma
