@@ -6,15 +6,18 @@ import { RouteCard } from "./RouteCard";
 import { EnvironmentalBadges } from "./EnvironmentalBadges";
 import { GeminiRecommendation } from "./GeminiRecommendation";
 import { RouteMap } from "./RouteMap";
+import { SaveRouteButton } from "./SaveRouteButton";
 import { useRoutePlanner } from "@/hooks/useRoutePlanner";
 import type { RouteRequest, RouteResponse } from "../../../../backend/src/types";
 
 export function RoutePlanner() {
   const [selectedRouteId, setSelectedRouteId] = useState<string | null>(null);
+  const [lastRequest, setLastRequest] = useState<RouteRequest | null>(null);
   const routePlannerMutation = useRoutePlanner();
 
   const handleSubmit = (request: RouteRequest) => {
     setSelectedRouteId(null);
+    setLastRequest(request);
     routePlannerMutation.mutate(request, {
       onSuccess: (data) => {
         if (data.recommendation?.recommendedRouteId) {
@@ -106,9 +109,19 @@ export function RoutePlanner() {
 
             {/* Route cards */}
             <section className="space-y-4">
-              <h2 className="text-lg font-semibold text-foreground">
-                Available Routes ({data.routes.length})
-              </h2>
+              <div className="flex items-center justify-between gap-3">
+                <h2 className="text-lg font-semibold text-foreground">
+                  Available Routes ({data.routes.length})
+                </h2>
+                {lastRequest && (
+                  <SaveRouteButton
+                    origin={lastRequest.origin}
+                    destination={lastRequest.destination}
+                    preferEco={lastRequest.preferEco ?? false}
+                    avoidHazards={lastRequest.avoidHazards ?? true}
+                  />
+                )}
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {data.routes.map((route) => (
                   <RouteCard
