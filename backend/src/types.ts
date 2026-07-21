@@ -240,3 +240,29 @@ export const InsightsResponseSchema = z.object({
 });
 
 export type InsightsResponse = z.infer<typeof InsightsResponseSchema>;
+
+// ==========================================
+// Saved Routes (personalized route preferences)
+// ==========================================
+
+export const SavedRouteSchema = z.object({
+  id: z.string(),
+  label: z.string(),
+  origin: z.string(),
+  destination: z.string(),
+  preferEco: z.boolean(),
+  avoidHazards: z.boolean(),
+  createdAt: z.string().datetime(),
+});
+
+export type SavedRoute = z.infer<typeof SavedRouteSchema>;
+
+export const CreateSavedRouteRequestSchema = z.object({
+  label: z.string().min(1).max(80).optional(),
+  origin: z.string().min(1),
+  destination: z.string().min(1),
+  preferEco: z.boolean().optional().default(false),
+  avoidHazards: z.boolean().optional().default(true),
+});
+
+export type CreateSavedRouteRequest = z.infer<typeof CreateSavedRouteRequestSchema>;
