@@ -5,6 +5,7 @@ import { camerasRouter } from "./routes/cameras";
 import { reportsRouter } from "./routes/reports";
 import { routesRouter } from "./routes/routes";
 import { insightsRouter } from "./routes/insights";
+import { savedRoutesRouter } from "./routes/savedRoutes";
 import { logger } from "hono/logger";
 
 export const app = new Hono();
@@ -30,6 +31,7 @@ app.route("/api/cameras", camerasRouter);
 app.route("/api/reports", reportsRouter);
 app.route("/api/routes", routesRouter);
 app.route("/api/insights", insightsRouter);
+app.route("/api/saved-routes", savedRoutesRouter);
 
 const port = Number(process.env.PORT) || 3000;
 
