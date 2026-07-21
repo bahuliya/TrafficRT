@@ -6,7 +6,7 @@ LumenRoute is an AI-powered traffic safety and eco-routing platform that transfo
 
 ## Features
 
-### 🚦 Guardian Dashboard
+### Guardian Dashboard
 Monitor live traffic conditions through an interactive dashboard that analyzes traffic camera feeds in real time. The system automatically detects hazards such as:
 
 - Traffic accidents
@@ -15,7 +15,7 @@ Monitor live traffic conditions through an interactive dashboard that analyzes t
 - Lane obstructions
 - Other roadway incidents
 
-### 🌱 Eco-Route Planner
+### Eco-Route Planner
 Generate routes optimized for more than just travel time. LumenRoute considers:
 
 - Carbon emissions
@@ -26,7 +26,7 @@ Generate routes optimized for more than just travel time. LumenRoute considers:
 
 to recommend safer and more environmentally friendly alternatives.
 
-### 📍 Scout Mode
+### Scout Mode
 Users can report infrastructure issues directly from the application, including:
 
 - Potholes
@@ -36,7 +36,7 @@ Users can report infrastructure issues directly from the application, including:
 
 Each report is automatically verified using AI-powered image analysis to reduce spam and false submissions.
 
-### 🤖 Multimodal AI Analysis
+### Multimodal AI Analysis
 LumenRoute combines multiple sources of information into a single decision-making pipeline, including:
 
 - Live traffic camera imagery
