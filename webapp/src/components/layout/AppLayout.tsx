@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
-import { Home, Shield, Route, Camera, Leaf, LayoutGrid, X, Menu } from "lucide-react";
+import { Home, Shield, Route, Camera, BarChart3, Leaf, LayoutGrid, X, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { CursorTrail } from "@/components/effects/CursorTrail";
@@ -17,6 +17,7 @@ const navItems: NavItem[] = [
   { icon: Shield, label: "Guardian", description: "Hazard monitoring", path: "/guardian" },
   { icon: Route, label: "Routes", description: "Eco route planner", path: "/routes" },
   { icon: Camera, label: "Scout", description: "Community reports", path: "/scout" },
+  { icon: BarChart3, label: "Insights", description: "Traffic analytics", path: "/insights" },
 ];
 
 export function AppLayout() {

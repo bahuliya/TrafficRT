@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { Home, Shield, Route, Camera } from "lucide-react";
+import { Home, Shield, Route, Camera, BarChart3 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface NavItem {
@@ -13,6 +13,7 @@ const navItems: NavItem[] = [
   { icon: Shield, label: "Guardian", path: "/guardian" },
   { icon: Route, label: "Routes", path: "/routes" },
   { icon: Camera, label: "Scout", path: "/scout" },
+  { icon: BarChart3, label: "Insights", path: "/insights" },
 ];
 
 export function BottomNav() {
