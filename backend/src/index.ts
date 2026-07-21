@@ -4,6 +4,7 @@ import "./env";
 import { camerasRouter } from "./routes/cameras";
 import { reportsRouter } from "./routes/reports";
 import { routesRouter } from "./routes/routes";
+import { insightsRouter } from "./routes/insights";
 import { logger } from "hono/logger";
 
 export const app = new Hono();
@@ -28,6 +29,7 @@ app.get("/health", (c) => c.json({ status: "ok" }));
 app.route("/api/cameras", camerasRouter);
 app.route("/api/reports", reportsRouter);
 app.route("/api/routes", routesRouter);
+app.route("/api/insights", insightsRouter);
 
 const port = Number(process.env.PORT) || 3000;
 
