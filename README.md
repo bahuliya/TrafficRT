@@ -1,6 +1,6 @@
 # TrafficRT
 
-LumenRoute is an AI-powered traffic safety and eco-routing platform that transforms existing traffic infrastructure into an intelligent safety network. By combining live traffic camera feeds, environmental data, and AI-verified community reports, LumenRoute detects road hazards in real time and recommends safer, more sustainable routes.
+TrafficRT is an AI-powered traffic safety and eco-routing platform that transforms existing traffic infrastructure into an intelligent safety network. By combining live traffic camera feeds, environmental data, and AI-verified community reports, it detects road hazards in real time and recommends safer, more sustainable routes.
 
 ---
 
@@ -16,7 +16,7 @@ Monitor live traffic conditions through an interactive dashboard that analyzes t
 - Other roadway incidents
 
 ### Eco-Route Planner
-Generate routes optimized for more than just travel time. LumenRoute considers:
+Generate routes optimized for more than just travel time. TrafficRT considers:
 
 - Carbon emissions
 - Air quality
@@ -49,7 +49,7 @@ A real-time analytics view that aggregates live camera hazards and community rep
 Frequent commuters can save their planned trips—including eco and hazard-avoidance preferences—and reload them into the planner with a single tap.
 
 ### Multimodal AI Analysis
-LumenRoute combines multiple sources of information into a single decision-making pipeline, including:
+TrafficRT combines multiple sources of information into a single decision-making pipeline, including:
 
 - Live traffic camera imagery
 - User-submitted photos
@@ -149,8 +149,8 @@ Submitted images are analyzed using Gemini Vision to verify that the uploaded ph
 Clone the repository.
 
 ```bash
-git clone https://github.com/your-username/lumenroute.git
-cd lumenroute
+git clone https://github.com/your-username/TrafficRT.git
+cd TrafficRT
 ```
 
 Install dependencies.
@@ -216,7 +216,7 @@ http://localhost:3000
 ## Project Structure
 
 ```
-lumenroute/
+TrafficRT/
 ├── frontend/
 │   ├── components/
 │   ├── pages/
